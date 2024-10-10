@@ -22,6 +22,10 @@ public class AopApplication {
 
     private void doTheJob(AccountDAO theAccountDAO) {
         theAccountDAO.addAccount();
+        theAccountDAO.getName();
+        theAccountDAO.getSourceCodename();
+        theAccountDAO.setName("Name");
+        theAccountDAO.setSourceCodename("Source Codename");
     }
 }
 
