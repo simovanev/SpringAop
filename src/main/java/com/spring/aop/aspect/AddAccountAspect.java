@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Order(2)
 public class AddAccountAspect {
-    @Before("noGettersAndSetters()")
+    @Before("com.spring.aop.aspect.PointcutDeclarations.noGettersAndSetters()")
     public  void beforeAddAccountAdvice(){
         System.out.println("==========Before add account advice==========");
     }

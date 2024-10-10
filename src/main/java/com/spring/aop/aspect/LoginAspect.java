@@ -8,11 +8,11 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-@Order(3)
+@Order(1)
 public class LoginAspect {
 
 
-    @Before("noGettersAndSetters()")
+    @Before("com.spring.aop.aspect.PointcutDeclarations.noGettersAndSetters()")
     public void beforeLogin() {
         System.out.println("==========Before login==========");
     }
