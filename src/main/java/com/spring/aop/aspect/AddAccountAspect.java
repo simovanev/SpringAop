@@ -2,19 +2,15 @@ package com.spring.aop.aspect;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-@Order(3)
-public class LoginAspect {
-
-
+@Order(2)
+public class AddAccountAspect {
     @Before("noGettersAndSetters()")
-    public void beforeLogin() {
-        System.out.println("==========Before login==========");
+    public  void beforeAddAccountAdvice(){
+        System.out.println("==========Before add account advice==========");
     }
-
 }
