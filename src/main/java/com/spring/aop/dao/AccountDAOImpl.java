@@ -1,6 +1,10 @@
 package com.spring.aop.dao;
 
+import com.spring.aop.Account;
 import org.springframework.stereotype.Repository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class AccountDAOImpl implements AccountDAO{
@@ -10,6 +14,18 @@ public class AccountDAOImpl implements AccountDAO{
     public String getName() {
         System.out.println(getClass().getSimpleName()+" getName");
         return name;
+    }
+
+    @Override
+    public List<Account> getAccounts() {
+        Account a1=new Account("Pesho","bronze");
+        Account a2=new Account("Gosho","silver");
+        Account a3=new Account("Ivan","Gold");
+        List<Account> accounts=new ArrayList<Account>();
+        accounts.add(a1);
+        accounts.add(a2);
+        accounts.add(a3);
+        return accounts;
     }
 
     public void setName(String name) {

@@ -1,5 +1,9 @@
 package com.spring.aop.dao;
 
+import com.spring.aop.Account;
+
+import java.util.List;
+
 public interface AccountDAO {
     void addAccount();
 
@@ -7,4 +11,5 @@ public interface AccountDAO {
     String getSourceCodename();
     void setName(String name);
     String getName();
+    List<Account> getAccounts();
 }

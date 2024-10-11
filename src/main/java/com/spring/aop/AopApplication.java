@@ -16,8 +16,15 @@ public class AopApplication {
     @Bean
     public CommandLineRunner commandLineRunner(AccountDAO theAccountDAO) {
         return runner -> {
-            doTheJob(theAccountDAO);
+            //doTheJob(theAccountDAO);
+            afterReturnAdvise(theAccountDAO);
         };
+    }
+
+    private void afterReturnAdvise(AccountDAO theAccountDAO) {
+        System.out.println("-----------");
+        System.out.println(theAccountDAO.getAccounts());
+        System.out.println("-----------");
     }
 
     private void doTheJob(AccountDAO theAccountDAO) {
