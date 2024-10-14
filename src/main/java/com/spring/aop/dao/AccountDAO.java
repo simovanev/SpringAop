@@ -12,4 +12,6 @@ public interface AccountDAO {
     void setName(String name);
     String getName();
     List<Account> getAccounts();
+
+    List<Account> getAccount(boolean condition);
 }

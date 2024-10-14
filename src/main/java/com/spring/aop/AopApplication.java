@@ -6,6 +6,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.List;
+
 @SpringBootApplication
 public class AopApplication {
 
@@ -17,8 +19,19 @@ public class AopApplication {
     public CommandLineRunner commandLineRunner(AccountDAO theAccountDAO) {
         return runner -> {
             //doTheJob(theAccountDAO);
-            afterReturnAdvise(theAccountDAO);
+            //afterReturnAdvise(theAccountDAO);
+            throwExceptionMethod(theAccountDAO);
         };
+    }
+
+    private void throwExceptionMethod(AccountDAO theAccountDAO) {
+        boolean condition = true;
+        List<Account> account = null;
+        try {
+            account = theAccountDAO.getAccount(condition);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     private void afterReturnAdvise(AccountDAO theAccountDAO) {
