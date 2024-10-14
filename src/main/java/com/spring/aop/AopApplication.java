@@ -1,6 +1,7 @@
 package com.spring.aop;
 
 import com.spring.aop.dao.AccountDAO;
+import com.spring.aop.service.TrafficFortuneService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,12 +17,18 @@ public class AopApplication {
     }
 
     @Bean
-    public CommandLineRunner commandLineRunner(AccountDAO theAccountDAO) {
+    public CommandLineRunner commandLineRunner(AccountDAO theAccountDAO, TrafficFortuneService
+                                               theTrafficFortuneService) {
         return runner -> {
             //doTheJob(theAccountDAO);
             //afterReturnAdvise(theAccountDAO);
-            throwExceptionMethod(theAccountDAO);
+            //throwExceptionMethod(theAccountDAO);
+            takeTheFortune(theTrafficFortuneService);
         };
+    }
+
+    private void takeTheFortune(TrafficFortuneService theTrafficFortuneService) {
+        theTrafficFortuneService.getFortune();
     }
 
     private void throwExceptionMethod(AccountDAO theAccountDAO) {

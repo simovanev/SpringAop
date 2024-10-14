@@ -2,10 +2,8 @@ package com.spring.aop.aspect;
 
 import com.spring.aop.Account;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.AfterThrowing;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.*;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +13,17 @@ import java.util.List;
 @Component
 @Order(2)
 public class AddAccountAspect {
+    @Around("execution(* com.spring.aop.service.*.getFortune())")
+
+    public Object aroundAdvise(ProceedingJoinPoint joinPoint) throws Throwable {
+        long startTime = System.currentTimeMillis();
+        Object result = joinPoint.proceed();
+        long endTime = System.currentTimeMillis();
+        long duration = (endTime - startTime)/1000;
+        System.out.println("Duration: " + duration);
+    return result;
+    }
+
     @AfterThrowing(
             pointcut = "(execution(* com.spring.aop.dao.AccountDAO.getAccount(..)))",
             throwing = "exc")
