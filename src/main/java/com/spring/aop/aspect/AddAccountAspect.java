@@ -23,6 +23,17 @@ public class AddAccountAspect {
         System.out.println("+++++++After+++++++");
         System.out.println(joinPoint.getSignature().toShortString());
         System.out.println("Result "+result);
+
+        changeTheNamesToUpperCase(result);
+        for (Account account : result) {
+            System.out.print(account.getName()+"  ");
+        }
+    }
+
+    private void changeTheNamesToUpperCase(List<Account> result) {
+        for(Account a : result) {
+            a.setName(a.getName().toUpperCase());
+        }
     }
 
 
